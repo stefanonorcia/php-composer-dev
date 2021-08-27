@@ -1,0 +1,30 @@
+version: '3'
+services:
+  httpd:
+    build:
+      dockerfile: Dockerfile
+      context: contextHttpd
+      args:
+        URL : ${URL}
+    image: httpd
+    ports:
+      - "443:443"
+    volumes:
+      - ./www:/var/www/${URL}
+      - ./logs/apache2:/var/log/apache2
+    depends_on:
+      - mariadb
+    healthcheck:
+      test: curl -f http://localhost
+      interval: 20s
+      timeout: 10s
+      retries: 2
+
+  mariadb:
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    env_file:
+      - ./contextMariadb/conf/mariadb.env

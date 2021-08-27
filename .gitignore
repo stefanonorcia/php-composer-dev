@@ -1,0 +1,5 @@
+.idea
+contextHttpd/cert
+mariadb
+logs/apache2
+logs/mariadb
