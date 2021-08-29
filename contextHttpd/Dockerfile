@@ -33,7 +33,7 @@ RUN apt-get install -y \
             	php-zip \
                 php-bcmath \
             	composer \
-                curl \
+                curl
 
 #APACHE2 CONF
 RUN touch /etc/apache2/sites-available/$URL.conf

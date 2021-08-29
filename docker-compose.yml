@@ -14,11 +14,6 @@ services:
       - ./logs/apache2:/var/log/apache2
     depends_on:
       - mariadb
-    healthcheck:
-      test: curl -f http://localhost
-      interval: 20s
-      timeout: 10s
-      retries: 2
 
   mariadb:
     image: mariadb:latest
