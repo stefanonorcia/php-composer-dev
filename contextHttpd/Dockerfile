@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 MAINTAINER Stefano Norcia <stefano.norcia@gmail.com>
 LABEL Description="Ubuntu HTTPD" \
       License="Apache License 2.0" \
@@ -49,11 +49,11 @@ RUN echo "CustomLog \${APACHE_LOG_DIR}/cp_access.log combined" >> /etc/apache2/s
 RUN echo "</VirtualHost>" >> /etc/apache2/sites-available/$URL.conf
 
 #XDEBUG
-RUN echo "xdebug.remote_enable = 1" >> /etc/php/7.4/mods-available/xdebug.ini
-RUN echo "xdebug.remote_host = host.docker.internal" >> /etc/php/7.4/mods-available/xdebug.ini
-RUN echo "xdebug.remote_port = 9000" >> /etc/php/7.4/mods-available/xdebug.ini
-RUN echo "xdebug.remote_autostart = 1" >> /etc/php/7.4/mods-available/xdebug.ini
-RUN echo "xdebug.remote_log=/var/log/apache2/xdebug.log" >> /etc/php/7.4/mods-available/xdebug.ini
+RUN echo "xdebug.remote_enable = 1" >> /etc/php/8.1/mods-available/xdebug.ini
+RUN echo "xdebug.remote_host = host.docker.internal" >> /etc/php/8.1/mods-available/xdebug.ini
+RUN echo "xdebug.remote_port = 9000" >> /etc/php/8.1/mods-available/xdebug.ini
+RUN echo "xdebug.remote_autostart = 1" >> /etc/php/8.1/mods-available/xdebug.ini
+RUN echo "xdebug.remote_log=/var/log/apache2/xdebug.log" >> /etc/php/8.1/mods-available/xdebug.ini
 
 RUN a2dissite 000-default.conf
 RUN a2ensite $URL.conf
@@ -65,7 +65,7 @@ RUN rm -r /var/www/html
 RUN mkdir /var/www/$URL
 RUN chown -R www-data:www-data /var/www/$URL
 
-COPY php.ini /etc/php/7.4/apache2/
+COPY php.ini /etc/php/8.1/apache2/
 COPY cert/crt /etc/apache2/ssl/
 COPY cert/key /etc/apache2/ssl/
 
