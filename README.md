@@ -1,6 +1,6 @@
 # php-composer-dev
 
-This is the docker compose I use when developing PHP projects: Ubuntu 20.04 Apache2, PHP 7.4, XDebug, MariaDB.
+This is the docker compose I use when developing PHP projects: Ubuntu 22.04 Apache2, PHP 8.1, XDebug, MariaDB.
 
 ## Requirements
 
